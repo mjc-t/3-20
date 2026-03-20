@@ -1,0 +1,44 @@
+AD 값 조정
+RIP
+1) 전체
+router rip
+distance 값
+2) 특정경로에 대해
+router rip
+distance 값 0.0.0.0 255.255.255.255 ACL번호
+access-list 번호 permit 네트워크 와일드카드마스크
+3) 특정경로로부터 들어오는 특정경로에 대해
+router rip
+distance 값 네트워크 와일드카드마스크 ACL번호
+access-list 번호 permit 네트워크 와일드카드마스크
+
+OSPF
+1) 재분배된 외부경로
+router ospf 1
+distance ospf external 값
+
+2) 내부, 외부 에어리어, 재분배 외부경로
+router ospf 1
+distance ospf intra-area 값 inter-area 값 external 값
+
+3) 특정경로
+router ospf 1
+distance 값 0.0.0.0 255.255.255.255 ACL번호
+
+access-list 번호 permit 네트워크 와일드카드마스크
+
+EIGRP
+router eigrp 1
+distance eigrp 내부값 외부값
+
+BGP
+router bgp X
+distance bgp 외부값 내부값 로컬값
+
+Routing Looping
+1) 뺑뺑이
+2) 먼길 우회
+
+재분배시 Looping
+1) Multi-Point 재분배
+2) EIGRP 이외의 프로토콜끼리의 재분배
